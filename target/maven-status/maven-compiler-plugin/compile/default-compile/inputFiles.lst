@@ -1,0 +1,6 @@
+/workspaces/comps/src/main/java/com/comps/text/model/textcompletion/request/TextCompletionRequest.java
+/workspaces/comps/src/main/java/com/comps/text/utils/Util.java
+/workspaces/comps/src/main/java/com/comps/text/Client.java
+/workspaces/comps/src/main/java/com/comps/text/model/textcompletion/response/TextCompletionResponse.java
+/workspaces/comps/src/main/java/com/comps/text/model/textcompletion/response/Usage.java
+/workspaces/comps/src/main/java/com/comps/text/model/textcompletion/response/Choice.java
