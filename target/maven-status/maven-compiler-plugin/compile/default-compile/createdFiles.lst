@@ -1,6 +1,0 @@
-com/comps/text/model/textcompletion/response/TextCompletionResponse.class
-com/comps/text/Client.class
-com/comps/text/model/textcompletion/request/TextCompletionRequest.class
-com/comps/text/utils/Util.class
-com/comps/text/model/textcompletion/response/Usage.class
-com/comps/text/model/textcompletion/response/Choice.class
