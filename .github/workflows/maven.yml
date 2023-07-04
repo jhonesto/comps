@@ -37,9 +37,7 @@ jobs:
         echo "Unzip jar-in-jar-loader.zip"
         unzip -d libs/ jar-in-jar-loader.zip
         echo "Copying com directory to libs folder"
-        cp -r com/ libs/
+        cp -r classes/com/ libs/
         echo "Create META-INF directory"
         mkdir libs/META-INF
         ls -lh libs/
-
-   
