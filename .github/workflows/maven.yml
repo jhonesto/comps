@@ -28,4 +28,18 @@ jobs:
     - name: Deploy with Maven
       run: mvn  deploy -f pom.xml
 
+    - name: Run bash commands to prepare packaging
+      run: |
+        echo "Changing directory to Target folder"
+        cd target
+        echo "Downloading jar-in-jar-loader.zip"
+        wget https://git.eclipse.org/c/jdt/eclipse.jdt.ui.git/tree/org.eclipse.jdt.ui/jar-in-jar-loader.zip
+        echo "Unzip jar-in-jar-loader.zip"
+        unzip -d libs/ jar-in-jar-loader.zip
+        echo "Copying com directory to libs folder"
+        cp -r com/ libs/
+        echo "Create META-INF directory"
+        mkdir libs/META-INF
+        ls -lh libs/
+
    
