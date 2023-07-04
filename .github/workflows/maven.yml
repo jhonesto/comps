@@ -33,7 +33,7 @@ jobs:
         echo "Changing directory to Target folder"
         cd target
         echo "Downloading jar-in-jar-loader.zip"
-        wget https://git.eclipse.org/c/jdt/eclipse.jdt.ui.git/tree/org.eclipse.jdt.ui/jar-in-jar-loader.zip
+        curl -LJO https://github.com/jhonesto/files/raw/main/jar-in-jar-loader.zip
         echo "Unzip jar-in-jar-loader.zip"
         unzip -d libs/ jar-in-jar-loader.zip
         echo "Copying com directory to libs folder"
