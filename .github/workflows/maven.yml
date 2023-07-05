@@ -51,7 +51,7 @@ jobs:
         MAIN_CLASS=org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader CLASS_PATH=. RSRC_CLASS_PATH=$(echo *.jar) RSRC_MAIN_CLASS=com.comps.text.Client sh GEN_MANIFEST.sh
         echo "Normalizing MANIFEST.MF file."
         cat NORMALIZE.sh
-        FILE=MANIFEST.MF sh NORMALIZE.sh
+        FILE=MANIFEST.MF bash NORMALIZE.sh
         echo "Moving MANIFEST.MF to META-INF folder"
         mv MANIFEST.MF.new META-INF/MANIFEST.MF
         echo "Removing Helpers and Old MANIFEST"
