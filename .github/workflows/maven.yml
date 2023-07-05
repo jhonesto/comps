@@ -64,5 +64,5 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         file: "${{ github.workspace }}/target/libs/comps*.jar"
-        tags: true
-        draft: true
+        #tags: true
+        draft: false
