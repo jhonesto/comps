@@ -25,6 +25,9 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+    - name: Cleaning Folders
+      run: mvn clean -f pom.xml
+    
     - name: Deploy with Maven
       run: mvn  deploy -f pom.xml
 
