@@ -25,6 +25,7 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+    
     - name: Cleaning Folders
       run: mvn clean -f pom.xml
     
@@ -40,7 +41,7 @@ jobs:
         curl -LJO https://github.com/jhonesto/files/raw/main/comps-pkg/GEN_MANIFEST.sh
         curl -LJO https://github.com/jhonesto/files/raw/main/comps-pkg/NORMALIZE.sh
         mv GEN_MANIFEST.sh NORMALIZE.sh libs/
-        echo "Unzip jar-in-jar-loader.zip"
+        echo "Unziping jar-in-jar-loader.zip"
         unzip -d libs/ jar-in-jar-loader.zip
         echo "Copying com directory to libs folder"
         cp -r classes/com/ libs/
@@ -50,12 +51,18 @@ jobs:
         cd libs
         MAIN_CLASS=org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader CLASS_PATH=. RSRC_CLASS_PATH=$(echo *.jar) RSRC_MAIN_CLASS=com.comps.text.Client sh GEN_MANIFEST.sh
         echo "Normalizing MANIFEST.MF file."
-        cat NORMALIZE.sh
         FILE=MANIFEST.MF bash NORMALIZE.sh
         echo "Moving MANIFEST.MF to META-INF folder"
         mv MANIFEST.MF.new META-INF/MANIFEST.MF
         echo "Removing Helpers and Old MANIFEST"
         rm MANIFEST.MF NORMALIZE.sh GEN_MANIFEST.sh
         echo "Creating a jar file"
-        jar cvfm comps-FULL.jar META-INF/MANIFEST.MF .
-        ls -lh
+        jar cvfm comps-0.0.1-FULL.jar META-INF/MANIFEST.MF .
+    
+    - uses: xresloader/upload-to-github-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        file: "${{ github.workspace }}/target/libs/comps*.jar"
+        tags: true
+        draft: true
