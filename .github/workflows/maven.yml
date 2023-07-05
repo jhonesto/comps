@@ -32,12 +32,26 @@ jobs:
       run: |
         echo "Changing directory to Target folder"
         cd target
-        echo "Downloading jar-in-jar-loader.zip"
-        curl -LJO https://github.com/jhonesto/files/raw/main/jar-in-jar-loader.zip
+        echo "Downloading helpers for packaging packages."
+        curl -LJO https://github.com/jhonesto/files/raw/main/comps-pkg/jar-in-jar-loader.zip
+        curl -LJO https://github.com/jhonesto/files/raw/main/comps-pkg/GEN_MANIFEST.sh
+        curl -LJO https://github.com/jhonesto/files/raw/main/comps-pkg/NORMALIZE.sh
+        mv GEN_MANIFEST.sh NORMALIZE.sh libs/
         echo "Unzip jar-in-jar-loader.zip"
         unzip -d libs/ jar-in-jar-loader.zip
         echo "Copying com directory to libs folder"
         cp -r classes/com/ libs/
         echo "Create META-INF directory"
         mkdir libs/META-INF
-        ls -lh libs/
+        echo "Creating MANIFEST.MF"
+        cd libs
+        MAIN_CLASS=org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader CLASS_PATH=. RSRC_CLASS_PATH=$(echo *.jar) RSRC_MAIN_CLASS=com.comps.text.Client sh GEN_MANIFEST.sh
+        echo "Normalizing MANIFEST.MF file."
+        sh NORMALIZE.sh MANIFEST.MF
+        echo "Moving MANIFEST.MF to META-INF folder"
+        mv MANIFEST.MF.new META-INF/MANIFEST.MF
+        echo "Removing Helpers and Old MANIFEST"
+        rm MANIFEST.MF NORMALIZE.sh GEN_MANIFEST.sh
+        echo "Creating a jar file"
+        jar cvfm comps-FULL.jar META-INF/MANIFEST.MF .
+        ls -lh
