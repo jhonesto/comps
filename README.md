@@ -10,7 +10,7 @@ Comps is a project that uses the OpenAI Completions API to provide a powerful
  or later installed  on your computer and then you can run comps by using the
  command:
 
- `java -jar comps-0.0.1.jar`
+ `java -jar comps-<version>.jar`
 
 The OpenAI Completions API uses a cutting-edge machine learning algorithm that
  can generate human-level completions of text. With Comps, you can use the API
