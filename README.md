@@ -6,12 +6,8 @@ Text Completions with the power of AI.
 
 Comps is a project that uses the OpenAI Completions API to provide a powerful
  autocomplete experience. It is written in Java 7, so can be easily integrated
- into your project. To get started, you need to have an [OpenAI API Key](https://platform.openai.com/account/api-keys), Java 7
- or later installed  on your computer and then you can run comps by using the
- command:
-
- `java -jar comps-<version>.jar`
-
+ into your project. 
+ 
 The OpenAI Completions API uses a cutting-edge machine learning algorithm that
  can generate human-level completions of text. With Comps, you can use the API
  to automatically complete any sentence you type in. Comps will use the OpenAI
@@ -27,3 +23,11 @@ Comps is a powerful tool for quickly autocompleting text, and it can be used to
  great effect in many different applications. 
 
 Try it out today and let me know how it helps your project!
+
+## Instructions
+
+To get started, you need to have an [OpenAI API Key](https://platform.openai.com/account/api-keys), Java 7
+ or later installed  on your computer and then you can run comps by using the
+ command:
+
+ `java -jar comps-<version>.jar`
