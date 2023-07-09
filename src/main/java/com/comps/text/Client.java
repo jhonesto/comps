@@ -83,6 +83,7 @@ public class Client {
 
 				println("An error ocurred: " + e.getMessage());
 				println("The application will be closed.");
+				break;
 
 			}
 
