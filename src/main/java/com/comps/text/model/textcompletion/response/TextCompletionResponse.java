@@ -4,12 +4,21 @@ import java.util.List;
 
 public class TextCompletionResponse {
     
+    private String warning;
     private String id;
     private String object;
     private long created;
     private String model;
     private List<Choice> choices;
     private Usage usage;
+
+    public String getWarning(){
+        return warning;
+    }
+
+    public void setWarning(String warning){
+        this.warning = warning;
+    }
 
     public String getId() {
         return id;
