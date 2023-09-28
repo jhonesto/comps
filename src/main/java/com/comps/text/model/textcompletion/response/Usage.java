@@ -1,33 +1,38 @@
 package com.comps.text.model.textcompletion.response;
 
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 public class Usage {
-	
-	private int prompt_tokens;
-    private int completion_tokens;
-    private int total_tokens;
-    
-    public int getPrompt_tokens() {
-		return prompt_tokens;
+
+	private int completionTokens;
+	private int promptTokens;
+	private int totalTokens;
+
+	public int getPromptTokens() {
+		return promptTokens;
 	}
 
-	public void setPrompt_tokens(int prompt_tokens) {
-		this.prompt_tokens = prompt_tokens;
+	@JsonSetter(value = "prompt_tokens")
+	public void setPromptTokens(int promptTokens) {
+		this.promptTokens = promptTokens;
 	}
 
-	public int getCompletion_tokens() {
-		return completion_tokens;
+	public int getCompletionTokens() {
+		return completionTokens;
 	}
 
-	public void setCompletion_tokens(int completion_tokens) {
-		this.completion_tokens = completion_tokens;
+	@JsonSetter(value = "completion_tokens")
+	public void setCompletionTokens(int completionTokens) {
+		this.completionTokens = completionTokens;
 	}
 
-	public int getTotal_tokens() {
-		return total_tokens;
+	public int getTotalTokens() {
+		return totalTokens;
 	}
-	
-	public void setTotal_tokens(int total_tokens) {
-		this.total_tokens = total_tokens;
+
+	@JsonSetter(value = "total_tokens")
+	public void setTotalTokens(int totalTokens) {
+		this.totalTokens = totalTokens;
 	}
 
 }

@@ -1,11 +1,13 @@
 package com.comps.text.model.textcompletion.response;
 
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 public class Choice {
 	
     private String text;
 	private int index;
     private Object logprobs;
-    private String finish_reason;
+    private String finishReason;
     
     public String getText() {
 		return text;
@@ -31,12 +33,14 @@ public class Choice {
 		this.logprobs = logprobs;
 	}
 
-	public String getFinish_reason() {
-		return finish_reason;
+	public String getFinishReason() {
+		return finishReason;
 	}
 	
-	public void setFinish_reason(String finish_reason) {
-		this.finish_reason = finish_reason;
+	@JsonSetter(value = "finish_reason")
+	public void setFinishReason(String finishReason) {
+		this.finishReason = finishReason;
 	}
+	
 
 }

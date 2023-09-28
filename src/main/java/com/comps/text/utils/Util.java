@@ -3,39 +3,38 @@ package com.comps.text.utils;
 import org.apache.cxf.jaxrs.client.WebClient;
 import org.json.JSONObject;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.comps.text.model.textcompletion.request.TextCompletionRequest;
 import com.comps.text.model.textcompletion.response.TextCompletionResponse;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.ws.rs.core.Response;
 
 public final class Util {
 
-	public static final String prompt_msg = "\n\033[36mInsert your message: \033[0m";
+	public static final String PROMPT_MESSAGE = "\n\033[36mInsert your message: \033[0m";
 
-	public static final String info_msg = "\033[33m\n[type exit to quit, ? for help]\n\033[0m";
+	public static final String INFO_MSG = "\033[33m\n[type exit to quit, ? for help]\n\033[0m";
 
-	public static final String info_token_msg = "\033[33m\n[your token is empty, type ? for help]\n\033[0m";
+	public static final String INFO_TOKEN_MSG = "\033[33m\n[your token is empty, type ? for help]\n\033[0m";
 
-	public static final String info_submenu = "\033[33m\n[type enter to back to main chat]\n\033[0m";
+	public static final String INFO_SUBMENU = "\033[33m\n[type enter to back to main chat]\n\033[0m";
 
-	public static final String exit_cmd = "exit";
+	public static final String EXIT_CMD = "exit";
 
-	public static final String menu_cmd = "?";
+	public static final String MENU_CMD = "?";
 
-	public static final String empty = "";
+	public static final String EMPTY = "";
 
-	public static final String accept = "application/json";
+	public static final String ACCEPT = "application/json";
 
-	public static final String content = "application/json";
+	public static final String CONTENT = "application/json";
 
-	public static final String auth_header = "Authorization";
+	public static final String AUTHORIZATION = "Authorization";
 
-	public static final String apiUrl = "https://api.openai.com/v1/completions";
+	public static final String API_URL = "https://api.openai.com/v1/completions";
 
-	public static final String sub_menu_msg = "\n\033[33m" 
+	public static final String SUB_MENU_MSG = "\n\033[33m" 
 	  + "Select an option:\n\033[36m" + "1) Insert Token\n" + "2) Change Model\n" 
 	  + "3) Change Temperature\n" + "4) Change MaxTokens\n" 
 	  + "5) back to main menu" + " \033[0m";
@@ -44,26 +43,24 @@ public final class Util {
 	}
 
 	public static JSONObject object2Json(TextCompletionRequest model) {
-		JSONObject json = new JSONObject(model);
-		return json;
+		return new JSONObject(model);
+		
 	}
 
 	public static WebClient createWebClient(String token) {
-		WebClient client = WebClient.create(apiUrl);
-		client.accept(accept);
-		client.type(content);
-		client.header(auth_header, "Bearer " + token);
+		WebClient client = WebClient.create(API_URL);
+		client.accept(ACCEPT);
+		client.type(CONTENT);
+		client.header(AUTHORIZATION, "Bearer " + token);
 		return client;
 	}
 
 	public static TextCompletionResponse getTextResponse(Response response)
-			throws JsonProcessingException, JsonMappingException {
+			throws JsonProcessingException {
 
-		ObjectMapper objectMapper = new ObjectMapper();
+		return new ObjectMapper().readValue(new JSONObject(response.readEntity(String.class)).toString(),
+				TextCompletionResponse.class);
 
-		TextCompletionResponse comp = objectMapper
-				.readValue(new JSONObject(response.readEntity(String.class)).toString(), TextCompletionResponse.class);
-		return comp;
 	}
 
 	public static void printText(TextCompletionResponse comp) {

@@ -1,19 +1,22 @@
 package com.comps.text.model.textcompletion.request;
 
+import org.json.JSONPropertyName;
+
 public class TextCompletionRequest {
     private String model;
     private String prompt;
     private float temperature;
-    private int max_tokens; 
+    
+    private int maxTokens; 
 
     public TextCompletionRequest(){
     }
 
-    public TextCompletionRequest(String model, String prompt, float temperature, int max_tokens){
+    public TextCompletionRequest(String model, String prompt, float temperature, int maxTokens){
         this.model = model;
         this.prompt = prompt;
         this.temperature = temperature;
-        this.max_tokens = max_tokens;
+        this.maxTokens = maxTokens;
     }
 
     public String getModel() {
@@ -40,12 +43,13 @@ public class TextCompletionRequest {
         this.temperature = temperature;
     }
 
-    public int getMax_tokens() {
-        return max_tokens;
-    }
+    @JSONPropertyName(value = "max_tokens")
+	public int getMaxTokens() {
+		return maxTokens;
+	}
 
-    public void setMax_tokens(int max_tokens) {
-        this.max_tokens = max_tokens;
-    }
+	public void setMaxTokens(int maxTokens) {
+		this.maxTokens = maxTokens;
+	}
 }
 
