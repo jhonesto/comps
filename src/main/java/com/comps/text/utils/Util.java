@@ -35,16 +35,21 @@ public final class Util {
 	public static final String API_URL = "https://api.openai.com/v1/completions";
 
 	public static final String SUB_MENU_MSG = "\n\033[33m" 
-	  + "Select an option:\n\033[36m" + "1) Insert Token\n" + "2) Change Model\n" 
-	  + "3) Change Temperature\n" + "4) Change MaxTokens\n" 
-	  + "5) back to main menu" + " \033[0m";
+		+ "Select an option:\n"
+		+ "\033[36m" 
+		+ "1) Insert Token\n" 
+		+ "2) Change Model\n" 
+		+ "3) Change Temperature\n" 
+		+ "4) Change MaxTokens\n" 
+		+ "5) back to main menu"
+		+ " \033[0m";
 
 	private Util() {
 	}
 
 	public static JSONObject object2Json(TextCompletionRequest model) {
 		return new JSONObject(model);
-		
+
 	}
 
 	public static WebClient createWebClient(String token) {
@@ -55,8 +60,7 @@ public final class Util {
 		return client;
 	}
 
-	public static TextCompletionResponse getTextResponse(Response response)
-			throws JsonProcessingException {
+	public static TextCompletionResponse getTextResponse(Response response) throws JsonProcessingException {
 
 		return new ObjectMapper().readValue(new JSONObject(response.readEntity(String.class)).toString(),
 				TextCompletionResponse.class);
@@ -74,7 +78,7 @@ public final class Util {
 	public static void println(String str) {
 		System.out.println(str);
 	}
-	
+
 	public static boolean equalsIgnoreCase(String str1, String str2) {
 		return str1.trim().equalsIgnoreCase(str2.trim());
 	}
